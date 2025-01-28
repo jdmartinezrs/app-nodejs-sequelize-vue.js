@@ -1,4 +1,3 @@
-// src/repositories/projectRepository.js
 const { Project, User } = require('../models');
 
 class ProjectRepository {
@@ -57,4 +56,8 @@ class ProjectRepository {
   }
 }
 
-module.exports = new ProjectRepository();
+// Crea la instancia del repositorio después de la definición de la clase
+const projectRepository = new ProjectRepository();
+
+// Exporta la instancia para su uso en otros archivos
+module.exports = projectRepository;

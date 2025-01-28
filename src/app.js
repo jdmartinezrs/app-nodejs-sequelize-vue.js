@@ -1,10 +1,12 @@
 // src/app.js
+require('dotenv').config();
 const express = require('express');
 const userRoutes = require('./routes/userRoutes');
 const teamRoutes = require('./routes/teamRoutes');
 const projectRoutes = require('./routes/projectRoutes');
 const userProjectRoutes = require('./routes/userProjectRoutes'); 
 const app = express();
+
 
 // Middleware para parsear JSON
 app.use(express.json());

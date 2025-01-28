@@ -1,15 +1,16 @@
-// src/repositories/userRepository.js
 const { User } = require('../models');
 
 class UserRepository {
-    async findAll() {
-        const users = await User.findAll();
-        console.log('Users:', users); // Verifica qué se obtiene de la base de datos
-        return users;
-      }
+  async findAll() {
+    return await User.findAll();
+  }
 
   async findById(id) {
     return await User.findByPk(id);
+  }
+
+  async findByEmail(email) {
+    return await User.findOne({ where: { email } });
   }
 
   async create(userData) {
@@ -27,10 +28,13 @@ class UserRepository {
   async delete(id) {
     const user = await User.findByPk(id);
     if (user) {
-      return await user.destroy();
+      await user.destroy();
+      return true;
     }
-    return null;
+    return false;
   }
 }
 
-module.exports = new UserRepository();
+// Cambia la forma de exportar
+const userRepository = new UserRepository();
+module.exports = userRepository;

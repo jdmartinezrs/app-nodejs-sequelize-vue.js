@@ -1,10 +1,22 @@
-// src/models/userproject.js
-'use strict';
 module.exports = (sequelize, DataTypes) => {
   const UserProject = sequelize.define('UserProject', {
-    userId: DataTypes.INTEGER,
-    projectId: DataTypes.INTEGER
+    userId: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'Users',
+        key: 'id'
+      }
+    },
+    projectId: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'Projects',
+        key: 'id'
+      }
+    }
+  }, {
+    tableName: 'UserProjects'
   });
-
+  
   return UserProject;
 };

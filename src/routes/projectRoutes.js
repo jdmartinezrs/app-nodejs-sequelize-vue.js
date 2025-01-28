@@ -1,14 +1,15 @@
 // src/routes/projectRoutes.js
 const express = require('express');
 const projectController = require('../controllers/projectController');
+const authMiddleware = require('../middlewares/authMiddleware'); // Importar middleware
 
 const router = express.Router();
 
-// Definir rutas para Project
-router.get('/info', projectController.getAllProjects);
-router.get('/:id', projectController.getProjectById);
-router.post('/', projectController.createProject);
-router.put('/:id', projectController.updateProject);
-router.delete('/:id', projectController.deleteProject);
+// Rutas protegidas
+router.get('/info', authMiddleware, projectController.getAllProjects);
+router.get('/:id', authMiddleware, projectController.getProjectById);
+router.post('/', authMiddleware, projectController.createProject);
+router.put('/:id', authMiddleware, projectController.updateProject);
+router.delete('/:id', authMiddleware, projectController.deleteProject);
 
 module.exports = router;

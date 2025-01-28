@@ -21,6 +21,10 @@ module.exports = {
       teamId: {
         type: Sequelize.INTEGER
       },
+      password: {  // Aquí se agrega el campo 'password'
+        type: Sequelize.STRING,  // Puedes ajustar el tipo si es necesario
+        allowNull: false, // Es recomendable que no sea null para la seguridad
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
@@ -31,6 +35,7 @@ module.exports = {
       }
     });
   },
+
   async down(queryInterface, Sequelize) {
     await queryInterface.dropTable('Users');
   }
