@@ -1,5 +1,5 @@
-const sequelize = require('./src/config/db');
-const { User, Project, Team, UserProject } = require('./src/models');
+const sequelize = require('./server/config/db');
+const { User, Project, Team, UserProject } = require('./server/models');
 const bcrypt = require('bcryptjs');
 
 async function seedData() {
@@ -9,8 +9,8 @@ async function seedData() {
 
     // Insertar un equipo
     const team = await Team.create({
-      name: 'BucaramangaBreaks',
-      description: 'Diggin collectors of break music',
+      name: 'MedellínCrafters',
+      description: 'Digital creators and developers',
     });
 
     // Insertar un usuario con contraseña encriptada
@@ -18,17 +18,17 @@ async function seedData() {
     console.log('Password hash:', password);
 
     const user = await User.create({
-      firstName: 'bboy',
-      lastName: 'breaks',
-      email: 'breaks10.com',
+      firstName: 'Alex',
+      lastName: 'Ramirez',
+      email: 'alex@mail.com',
       password: password,
       teamId: team.id,
     });
 
     // Insertar un proyecto
     const project = await Project.create({
-      name: 'New Break Mixtape 2025',
-      description: 'To find colombian breaks in order to loop it',
+      name: 'E-commerce Platform 2025',
+      description: 'Building a modern e-commerce solution for local businesses',
     });
 
     // Asociar el usuario al proyecto

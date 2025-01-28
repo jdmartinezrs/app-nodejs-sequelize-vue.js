@@ -7,6 +7,7 @@ const bcrypt = require('bcryptjs');
 // Usar la clave secreta desde las variables de entorno
 const SECRET_KEY = process.env.JWT_SECRET;
 
+
 const userController = {
   async getAllUsers(req, res) {
     try {
