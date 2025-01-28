@@ -7,6 +7,10 @@ const projectRoutes = require('./routes/projectRoutes');
 const userProjectRoutes = require('./routes/userProjectRoutes'); 
 const app = express();
 
+// Configurar CORS
+const cors = require("cors");
+app.use(cors());
+
 // Middleware para parsear JSON
 app.use(express.json());
 
